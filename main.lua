@@ -48,6 +48,22 @@ local beam = display.newImage("Images/beam.png", 0, 0)
 	--ad to physics
 	physics.addBody(beam, "static", {friction=0.5, bounce=0.3})
 
+	--create a vertical beam
+local beam2 = display.newImage("Images/beam.png", 0, 0)
+
+	--set the x and y pos
+	beam2.x = 950
+	beam2.y = display.contentCenterY*1.65
+
+	--set the beam size
+	beam2.width = display.contentWidth/2
+	beam2.height = display.contentHeight/10
+
+	--rotate the beam -60 degrees so its on an angle
+	beam2:rotate(-60)
+	--ad to physics
+	physics.addBody(beam2, "static", {friction=0.5, bounce=0.3})
+
 --create bkg
 local bkg = display.newImage("Images/bkg.png", 0, 0)
 	
@@ -69,9 +85,11 @@ local bkg = display.newImage("Images/bkg.png", 0, 0)
 local function firstBall()
 	--creating the first ball
 	local ball1 = display.newImage("Images/super_ball.png", 0, 0)
+	ball1.x = 900
+	ball1.y = 0
 
 	--add to physics
-	physics.addBody(ball1, {density=1.0, friction=0.5, bounce=0.3, radius=25})
+	physics.addBody(ball1, {density=5.0, friction=0.5, bounce=0, radius=25})
 end
 ----------------------------------------------------------------------------------------------------------------------------------------
 
@@ -79,6 +97,8 @@ end
 local function secondBall()
 	--creating the first ball
 	local ball2 = display.newImage("Images/super_ball.png", 0, 0)
+	ball2.x = 910
+	ball2.y = 0
 
 	--add to physics
 	physics.addBody(ball2, {density=1.0, friction=0.5, bounce=0.3, radius=12.5})
@@ -92,9 +112,9 @@ end
 local function thirdBall()
 	--creating the third ball
 	local ball3 = display.newImage("Images/super_ball.png", 0, 0)
-
+	
 	--add to physics
-	physics.addBody(ball3, {density=1.0, friction=0.5, bounce=0.3, radius=50})
+	physics.addBody(ball3, {density=1.0, friction=0.8, bounce=0.3, radius=50})
 
 	--make it larger than the original size
 	ball3:scale(2, 2)
@@ -107,7 +127,7 @@ local function fourthBall()
 	local ball4 = display.newImage("Images/super_ball.png", 0, 0)
 
 	--add to physics
-	physics.addBody(ball4, {density=1.0, friction=0.5, bounce=0.3, radius=100})
+	physics.addBody(ball4, {density=1.0, friction=0.5, bounce=0.4, radius=100})
 
 	--make it larger than the original size
 	ball4:scale(4, 4)
@@ -118,5 +138,5 @@ end
 ----------------------------------------------------------------------------------------------------------------------------------------
 timer.performWithDelay( 0, firstBall)
 timer.performWithDelay( 500, secondBall)
-timer.performWithDelay( 100, thirdBall)
+timer.performWithDelay( 0, thirdBall)
 timer.performWithDelay( 300, fourthBall)
